@@ -36,7 +36,7 @@ ng.module('smart-table')
         },
 
         post: function (scope, element, attrs, ctrl) {
-          var pipeOnLoad = attrs.stExecutePipeOnLoad || config.pipe.executePipeOnLoad;
+          var pipeOnLoad = attrs.stExecutePipeOnLoad === "false" ? false : config.pipe.executePipeOnLoad;
           if (pipeOnLoad) {
             ctrl.pipe();
           }
