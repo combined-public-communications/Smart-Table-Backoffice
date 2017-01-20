@@ -1,5 +1,5 @@
 /** 
-* @version 2.1.8
+* @version 2.2.0
 * @license MIT
 */
 (function (ng, undefined){
@@ -36,7 +36,9 @@ ng.module('smart-table')
       delay:300
     },
     pipe: {
-      delay: 100 //ms
+      delay: 100, //ms
+      executePipeOnLoad: true,
+      pipeEvent: ''
     }
   });
 ng.module('smart-table')
@@ -506,6 +508,7 @@ ng.module('smart-table')
         pre: function (scope, element, attrs, ctrl) {
 
           var pipePromise = null;
+          var pipeEvent = attrs.stPipeEvent || config.pipe.pipeEvent;
 
           if (ng.isFunction(scope.stPipe)) {
             ctrl.preventPipeOnWatch();
@@ -521,11 +524,20 @@ ng.module('smart-table')
 
               return pipePromise;
             }
+
+            if (pipeEvent) {
+              scope.$on(pipeEvent, function () {
+                  ctrl.pipe();
+              });
+            }
           }
         },
 
         post: function (scope, element, attrs, ctrl) {
-          ctrl.pipe();
+          var pipeOnLoad = attrs.stExecutePipeOnLoad || config.pipe.executePipeOnLoad;
+          if (pipeOnLoad) {
+            ctrl.pipe();
+          }
         }
       }
     };

@@ -10,7 +10,7 @@ ng.module('smart-table')
         pre: function (scope, element, attrs, ctrl) {
 
           var pipePromise = null;
-          var pipeEvent = attr.stPipeEvent || stConfig.pipe.pipeEvent;
+          var pipeEvent = attrs.stPipeEvent || config.pipe.pipeEvent;
 
           if (ng.isFunction(scope.stPipe)) {
             ctrl.preventPipeOnWatch();
@@ -36,7 +36,7 @@ ng.module('smart-table')
         },
 
         post: function (scope, element, attrs, ctrl) {
-          var pipeOnLoad = attr.stExecutePipeOnLoad || stConfig.pipe.executePipeOnLoad;
+          var pipeOnLoad = attrs.stExecutePipeOnLoad || config.pipe.executePipeOnLoad;
           if (pipeOnLoad) {
             ctrl.pipe();
           }
