@@ -21,6 +21,8 @@ ng.module('smart-table')
       delay:300
     },
     pipe: {
-      delay: 100 //ms
+      delay: 100, //ms
+      executePipeOnLoad: true,
+      pipeEvent: ''
     }
   });

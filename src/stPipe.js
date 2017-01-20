@@ -25,11 +25,19 @@ ng.module('smart-table')
 
               return pipePromise;
             }
+
+            if (config.pipe.pipeEvent) {
+              scope.$on(config.pipe.pipeEvent, function () {
+                  ctrl.pipe();
+              });
+            }
           }
         },
 
         post: function (scope, element, attrs, ctrl) {
-          ctrl.pipe();
+          if (config.pipe.executePipeOnLoad) {
+            ctrl.pipe();
+          }
         }
       }
     };
