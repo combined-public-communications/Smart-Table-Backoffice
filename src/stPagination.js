@@ -72,7 +72,8 @@ ng.module('smart-table')
           }
         };
 
-        if (!ctrl.tableState().pagination.number) {
+        var pipeOnLoad = attrs.stExecutePipeOnLoad === "false" ? false : stConfig.pipe.executePipeOnLoad;
+        if (!ctrl.tableState().pagination.number && pipeOnLoad) {
           ctrl.slice(0, scope.stItemsByPage);
         }
       }
