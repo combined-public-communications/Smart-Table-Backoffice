@@ -6,6 +6,7 @@ ng.module('smart-table')
       scope: {
         stItemsByPage: '=?',
         stDisplayedPages: '=?',
+        stMaxPerPage: '=?',
         stPageChange: '&'
       },
       templateUrl: function (element, attrs) {
@@ -18,6 +19,7 @@ ng.module('smart-table')
 
         scope.stItemsByPage = scope.stItemsByPage ? +(scope.stItemsByPage) : stConfig.pagination.itemsByPage;
         scope.stDisplayedPages = scope.stDisplayedPages ? +(scope.stDisplayedPages) : stConfig.pagination.displayedPages;
+        scope.stMaxPerPage = scope.stMaxPerPage ? scope.stMaxPerPage : stConfig.pagination.maxPerPage;
 
         scope.currentPage = 1;
         scope.pages = [];
