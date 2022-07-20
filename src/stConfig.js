@@ -3,7 +3,8 @@ ng.module('smart-table')
     pagination: {
       template: 'template/smart-table/pagination.html',
       itemsByPage: 10,
-      displayedPages: 5
+      displayedPages: 5,
+      maxPerPage: 1000
     },
     search: {
       delay: 400, // ms
